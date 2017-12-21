@@ -16,7 +16,7 @@ class UsersController{
     FB.api(
       `/${req.body.data.authResponse.userID}`,
       'GET',
-      {fields: ['email','first_name', 'last_name'],
+      {fields: ['email','first_name', 'last_name', 'picture'],
       access_token: req.body.data.authResponse.accessToken },
       (response) => {
           console.log(response,'ini response dari fb')
@@ -25,6 +25,7 @@ class UsersController{
             if (dataUser == null){
               let newUser = {
                 email: response.email,
+                profPicUrl: response.picture.data.url,
                 userName: `${response.first_name} ${response.last_name}`
               }
               User.create(newUser)
