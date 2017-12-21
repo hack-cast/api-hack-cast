@@ -1,21 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const UserController = require('../controllers/users-controller')
+const UsersController = require('../controllers/users-controller')
 
 
 /* GET users Endpoint. */
 
 // Login Find OR Create User
-router.post('/login' , UserController )
+router.post('/login', UsersController.login)
 
 // Delete user
-router.delete('/:id', )
+router.delete('/:id', UsersController.deleteUser)
 
 // Find all user
-router.get('/',)
+router.get('/', UsersController.findAllUser)
 
 // Find One user by ID
-router.get('/:id', )
+router.get('/:id', UsersController.findUserById )
 
 
 module.exports = router;

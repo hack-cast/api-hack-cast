@@ -9,25 +9,25 @@ const bcrypt      = require('bcryptjs');
 const salt        = bcrypt.genSaltSync(10);
 const jwt         = require('jsonwebtoken');
 
-class UserController{
+class UsersController{
 
   // login
-  static login(){
+  static login(req, res){
 
   }
 
-  static deleteUser(){
+  static deleteUser(req, res){
 
   }
 
-  static findAllUser(){
+  static findAllUser(req, res){
 
   }
 
-  static findUserById(){
+  static findUserById(req, res){
 
   }
 
 }
 
-module.exports = UserController
+module.exports = UsersController
