@@ -15,7 +15,7 @@ router.delete('/:id', UsersController.deleteUser)
 router.get('/', UsersController.findAllUser)
 
 // Find One user by ID
-// router.get('/:id', UsersController.findUserById ) // deprecated: sama dengan login
+router.get('/:id', UsersController.findUserById ) 
 
 
 module.exports = router;

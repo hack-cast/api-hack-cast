@@ -76,6 +76,20 @@ class UsersController{
     })
   }
 
+  static findUserById(req, res){
+    User.find({_id: req.params.id})
+    .then(dataUser => {
+      res.status(200).json({
+        message: 'Find user specific data successful',
+        data: dataUser
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(200).send(err)
+    })
+  }
+
   
 
 }
