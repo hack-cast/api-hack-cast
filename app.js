@@ -11,6 +11,7 @@ const users           = require('./routes/users');
 const podcasts        = require('./routes/podcasts')
 const app             = express();
 
+
 // Mongo DB with Atlas server
 const mongoose    = require('mongoose');
 const atlasdbURL  = `mongodb://wahibhacktiv8:${process.env.DB_PASSWORD}@wahib-hacktiv8-shard-00-00-uyl7c.mongodb.net:27017,wahib-hacktiv8-shard-00-01-uyl7c.mongodb.net:27017,wahib-hacktiv8-shard-00-02-uyl7c.mongodb.net:27017/hackcast?ssl=true&replicaSet=wahib-hacktiv8-shard-0&authSource=admin`
@@ -19,6 +20,7 @@ mongoose.Promise = global.Promise;
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(cors())
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
