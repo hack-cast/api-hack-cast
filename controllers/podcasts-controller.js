@@ -7,6 +7,9 @@ class PodcastsController{
 
   static createPodcast(req, res){
 
+  }
+
+  static deletePodcast(req, res){
 
   }
 
@@ -18,14 +21,9 @@ class PodcastsController{
 
   }
 
-  static deletePodcast(req, res){
-
-
-  }
-
   static likeUnlike(req, res){
 
-    
+
   }
 
 }
