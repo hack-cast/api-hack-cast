@@ -49,11 +49,31 @@ class PodcastsController{
   }
 
   static findAllPodcast(req, res){
-
+    Podcast.find({})
+    .then(result => {
+      res.status(200).json({
+        message : 'Find all podcasts data successful...',
+        data: result
+      })
+    })
+    .catch(err => {
+      console.log(err),
+      res.status(500).send(err)
+    })
   }
 
   static findAllByUser(req, res){
-
+    Podcast.find({'caster': req.params.userId})
+    .then(result => {
+      res.status(200).json({
+        message : 'Find all podcasts data from specified user successful...',
+        data: result
+      })
+    })
+    .catch(err => {
+      console.log(err),
+      res.status(500).send(err)
+    })
   }
 
   static likeUnlike(req, res){
