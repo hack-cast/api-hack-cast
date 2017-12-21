@@ -11,6 +11,6 @@ const podcastSchema = new Schema({
   likers      : [{type: Schema.Types.ObjectId, ref: 'User'}]
 });
 
-const User = mongoose.model('Podcast', podcastSchema);
+const Podcast = mongoose.model('Podcast', podcastSchema);
 
-module.exports = User;
+module.exports = Podcast;

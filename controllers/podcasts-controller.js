@@ -9,7 +9,7 @@ class PodcastsController{
   static createPodcast(req, res){
     // method upload dari multer dkk
     // uploadPodcast()
-    // .then(result => {
+    // .then(result => { // --------------------------------- BEGIN
 
       // Database related process starts here
       let newPodcast = {
@@ -21,7 +21,7 @@ class PodcastsController{
       }
       Podcast.create(newPodcast)
       .then(result => {
-        res.status(200).jason({
+        res.status(200).json({
           message : 'Create new podcast successful...',
           data: result
         })
@@ -30,16 +30,22 @@ class PodcastsController{
         console.log(err),
         res.status(500).send(err)
       })
-      
-
-    // })
-
-   
-    
+    // }) // ---------------------------------------------    END 
   }
 
   static deletePodcast(req, res){
-
+    console.log(req.params.id)
+    Podcast.deleteOne({_id :req.params.id})
+    .then(result => {
+      res.status(200).json({
+        message: 'Delete podcast data Successful !',
+        data: result})
+    })
+    .catch(err => {
+      console.log('Masuk error nih')
+      console.log(err)
+      res.status(500).send(err)
+    })
   }
 
   static findAllPodcast(req, res){
