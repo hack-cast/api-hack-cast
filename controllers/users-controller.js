@@ -51,7 +51,7 @@ class UsersController{
   }
 
   static deleteUser(req, res){ 
-    User.deleteOne({_id : ObjectId(req.params.id)})
+    User.deleteOne({_id :req.params.id})
     .then(result => {
       res.status(200).json({
         message: 'Delete Successful !',
