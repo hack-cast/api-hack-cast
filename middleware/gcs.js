@@ -10,6 +10,7 @@ const getPublicUrl = (filename) => {
 }
 
 module.exports = (req, res, next) => {
+  
   if (!req.file) {
     next()
   }
@@ -21,8 +22,9 @@ module.exports = (req, res, next) => {
       contentType: req.file.mimetype
     }
   })
-
+  
   stream.on('error', (err) => {
+    console.log(err)
     req.file.cloudStorageError = err
     next(err)
   })
@@ -31,6 +33,7 @@ module.exports = (req, res, next) => {
     req.file.cloudStorageObject = gcsname
     file.makePublic()
       .then(() => {
+        
         req.file.cloudStoragePublicUrl = getPublicUrl(gcsname)
         next()
       })
