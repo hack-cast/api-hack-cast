@@ -13,7 +13,7 @@ const userAuthorization = require('../middleware/userAuthorization')
 router.post('/', multerUpload.single('audio'), gcsUpload, PodcastsController.createPodcast)
 
 // Delete podcast
-router.delete('/:id', PodcastsController.deletePodcast)
+router.delete('/:id', authentication, userAuthorization, PodcastsController.deletePodcast)
 
 // Find all podcasts
 router.get('/', PodcastsController.findAllPodcast)

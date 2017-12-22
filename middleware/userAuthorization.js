@@ -2,12 +2,19 @@
 const Podcast = require('../models/podcast')
 
 let userAuthorization = (req, res, next)=>{
-  // console.log('req body------------',req.body)
-  console .log('req header =========',req,headers)
-  Podcast.find({caster: req.headers.decoded._id})
+  console.log('masuk user-auth', req.headers.decoded_id)
+  // console .log('req header =========',req.headers.decoded)
+  Podcast.find({_id: req.params.id})
   .then(dataPodcast => {
-    console.log(dataPodcast)
-    next()
+    console.log('Ini data Podcast',dataPodcast)
+    if (dataPodcast.caster === req.headers.decoded_id) {
+      console.log('Authorized...')
+      next()
+    } else {
+      console.log('Un-Authorized...')
+    res.status(403).json({
+      message: 'You have no access...'})
+    }
   })
   .catch(err => {
     console.log(err)

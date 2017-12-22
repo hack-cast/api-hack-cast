@@ -12,7 +12,7 @@ class PodcastsController{
     // .then(result => { // --------------------------------- BEGIN
       // Database related process starts here
       let newPodcast = {
-        caster  : null,
+        caster  : req.headers.decoded._id,
         audioUrl: req.file.cloudStoragePublicUrl,
         casterPic: req.body.casterPic,
         title   : req.body.title,
