@@ -30,15 +30,35 @@ class UsersController{
               }
               User.create(newUser)
               .then(result => {
+                console.log(result)
+                let payload = {
+                  _id       : result._id,
+                  userName  : result.userName,
+                  email     : result.email,
+                  profPicUrl: result.profPicUrl,
+                }
+                let token = jwt.sign(payload, process.env.JWT_SECRET_TOKEN);
+                console.log('ini token create', token)
                 res.status(200).json({
                   message : 'Login Successful',
-                  data    : result
+                  data    : result,
+                  token   : token
                 })
               })
             } else{
+              let payload = {
+                _id       : dataUser._id,
+                userName  : dataUser.userName,
+                email     : dataUser.email,
+                profPicUrl: dataUser.profPicUrl,
+              }
+              console.log('ini payload',payload)
+              let token = jwt.sign(payload, process.env.JWT_SECRET_TOKEN);
+              console.log('ini token', token)
               res.status(200).json({
                 message : 'Login Successful',
-                data    : dataUser
+                data    : dataUser,
+                token   : token,
               })
             }
           })
