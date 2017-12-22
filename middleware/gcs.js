@@ -34,7 +34,7 @@ module.exports = (req, res, next) => {
     file.makePublic()
       .then(() => {
         
-        req.file.cloudStoragePublicUrl = getPublicUrl(gcsname)
+        req.file.cloudStoragePublicUrl = getPublicUrl(`assets/${gcsname}`)
         next()
       })
   })
