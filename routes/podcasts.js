@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const PodcastsController = require('../controllers/podcasts-controller')
+const multerUpload = require('../auth/multer')
+const gcsUpload = require('../auth/gcs')
 
 
 /* GET users Endpoint. */
 
 // Create Podcast
-router.post('/', PodcastsController.createPodcast)
+router.post('/', multerUpload.single('audio'), gcsUpload, PodcastsController.createPodcast)
 
 // Delete podcast
 router.delete('/:id', PodcastsController.deletePodcast)
