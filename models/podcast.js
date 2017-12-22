@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 
 const podcastSchema = new Schema({
   caster      : {type: Schema.Types.ObjectId, ref: 'User'},
+  casterPic   : String,
   audioUrl    : String,
   title       : String,
   duration    : Date,

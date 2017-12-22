@@ -4,6 +4,8 @@ const PodcastsController = require('../controllers/podcasts-controller')
 const multerUpload = require('../auth/multer')
 const gcsUpload = require('../auth/gcs')
 
+const authentication = require('../auth/authentication')
+const userAuthorization = require('../auth/userAuthorization')
 
 /* GET users Endpoint. */
 
@@ -20,7 +22,7 @@ router.get('/', PodcastsController.findAllPodcast)
 router.get('/:userId', PodcastsController.findAllByUser)
 
 //like Unlike
-router.put('/:id/likeunlike', PodcastsController.likeUnlike)
+router.put('/:id/likeunlike', authentication, userAuthorization, PodcastsController.likeUnlike)
 
 
 module.exports = router;
