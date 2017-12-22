@@ -10,15 +10,15 @@ class PodcastsController{
     // method upload dari multer dkk
     // uploadPodcast()
     // .then(result => { // --------------------------------- BEGIN
-    console.log('ini req.file', req.file)
       // Database related process starts here
       let newPodcast = {
-        caster  : req.body.userId,
-        // audioUrl: result.audioUrl, //atau apapun keluaran result
+        caster  : null,
+        audioUrl: req.file.cloudStoragePublicUrl,
         title   : req.body.title,
-        duration: req.body.duration,
+        duration: null,
         likers  : [] // initial value should be empty, no liker yet
       }
+
       Podcast.create(newPodcast)
       .then(result => {
         res.status(200).json({
