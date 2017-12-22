@@ -7,19 +7,21 @@ const Podcast = require('../models/podcast')
 class PodcastsController{
 
   static createPodcast(req, res){
+    console.log('masuk create podcast')
     // method upload dari multer dkk
     // uploadPodcast()
     // .then(result => { // --------------------------------- BEGIN
       // Database related process starts here
+      console.log(req.headers)
       let newPodcast = {
         caster  : req.headers.decoded._id,
         audioUrl: req.file.cloudStoragePublicUrl,
-        casterPic: req.body.casterPic,
+        casterPic: req.headers.decoded.profPicUrl,
         title   : req.body.title,
         duration: null,
         likers  : [] // initial value should be empty, no liker yet
       }
-
+      console.log(newPodcast,'ini new podcasts -----------------------')
       Podcast.create(newPodcast)
       .then(result => {
         res.status(200).json({
@@ -50,7 +52,7 @@ class PodcastsController{
   }
 
   static findAllPodcast(req, res){
-    Podcast.find({})
+    Podcast.find({}).populate('caster')
     .then(result => {
       res.status(200).json({
         message : 'Find all podcasts data successful...',
