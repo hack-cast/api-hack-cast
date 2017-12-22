@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const PodcastsController = require('../controllers/podcasts-controller')
-const multerUpload = require('../auth/multer')
-const gcsUpload = require('../auth/gcs')
+const multerUpload = require('../middleware/multer')
+const gcsUpload = require('../middleware/gcs')
 
-const authentication = require('../auth/authentication')
-const userAuthorization = require('../auth/userAuthorization')
+const authentication = require('../middleware/authentication')
+const userAuthorization = require('../middleware/userAuthorization')
 
 /* GET users Endpoint. */
 

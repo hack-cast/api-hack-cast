@@ -1,6 +1,6 @@
 // authentication of user
 
-const jwt         = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 let authentication = (req, res, next) => {
   console.log('masuk auth', req.headers.token) 

@@ -11,7 +11,9 @@ let userAuthorization = (req, res, next)=>{
   })
   .catch(err => {
     console.log(err)
-    res.status(500).json(err)
+    res.status(403).json({
+      message: 'You have no access...',
+      err: err})
   })
 }
 
