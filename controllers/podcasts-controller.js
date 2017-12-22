@@ -10,7 +10,7 @@ class PodcastsController{
     // method upload dari multer dkk
     // uploadPodcast()
     // .then(result => { // --------------------------------- BEGIN
-
+    console.log('ini req.file', req.file)
       // Database related process starts here
       let newPodcast = {
         caster  : req.body.userId,
